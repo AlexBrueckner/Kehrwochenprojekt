@@ -1,88 +1,81 @@
 package Kehrwochenprojekt.Datamodels;
 
-import org.json.JSONObject;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+
 /**
- * Created by Alex on 22.06.2017.
+ * User
+ * <p>
+ *
+ *
  */
+public class User {
 
-public class User extends KehrwochenData implements Evaluator{
-
-    private String _userID;
-    private String username;
+    @SerializedName("userName")
+    @Expose
+    private String userName;
+    @SerializedName("password")
+    @Expose
     private String password;
-    private String forename;
-    private String surname;
-    private Map<String,Task> tasks;
+    @SerializedName("foreName")
+    @Expose
+    private String foreName;
+    @SerializedName("surName")
+    @Expose
+    private String surName;
+    @SerializedName("tasks")
+    @Expose
+    private List<Object> tasks = null;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getForeName() {
+        return foreName;
+    }
 
     public User(){
-
+        tasks = new ArrayList<Object>();
     }
 
-    public User(String _userID, String username, String password, String forename, String surname, Map<String,Task> tasks){
-
+    public void setForeName(String foreName) {
+        this.foreName = foreName;
     }
 
-    public boolean addTask(String key, Task task){
-        return tasks.put(key,task) != null;
+    public String getSurName() {
+        return surName;
     }
 
-    public boolean removeTask(String key){
-        return tasks.remove(key) != null;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
-    public Task getTask(String key){
-        return tasks.get(key);
+    public List<Object> getTasks() {
+        return tasks;
     }
 
-    public void flushTasks(){
-        tasks.clear();
+    public void setTasks(List<Object> tasks) {
+        this.tasks = tasks;
     }
 
-    @Override
-    public JSONObject toJSON(Object o){
-        return null;
+    public void addTask(Task t){
+        tasks.add(t);
     }
 
-    @Override
-    public Object toObject(JSONObject jo){
-        return null;
-    }
-
-    @Override
-    public void evaluateObject(Evaluatable target, EvaluationResult res){
-
-    }
-
-    public String getUserID(){
-        return _userID;
-    }
-
-    public String getUsername(){
-        return username;
-    }
-
-    public String getForename(){
-        return forename;
-    }
-
-    public String getSurname(){
-        return surname;
-    }
-
-    public String getFullName(){
-        return getForename()+ " " + getSurname();
-    }
-
-    public void setUsername(String username){
-        this.username = username;
-    }
-
-    public void setSurname(String surname){
-        this.surname = surname;
-    }
-
-    public void setForename(String forename){
-        this.forename = forename;
-    }
 }

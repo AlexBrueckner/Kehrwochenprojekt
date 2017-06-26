@@ -1,75 +1,146 @@
 package Kehrwochenprojekt.Datamodels;
 
-import android.media.Image;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-import org.json.JSONObject;
-import Kehrwochenprojekt.Datamodels.Processingtime;
+import java.util.Map;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+
 /**
- * Created by Alex on 22.06.2017.
+ * Task
+ * <p>
+ *
+ *
  */
+public class Task {
 
-public class Task extends KehrwochenData implements Evaluatable {
-
-    private String _id;
+    //TODO: Implement parsing of Dates
+    @SerializedName("taskID")
+    @Expose
+    private String taskID;
+    @SerializedName("name")
+    @Expose
     private String name;
-    private List<Image> images;
-    private TaskEvaluationResult taEvaRes;
+    @SerializedName("creationDate")
+    @Expose
+    private Date creationDate;
+    @SerializedName("deadline")
+    @Expose
+    private Date deadline;
+    @SerializedName("state")
+    @Expose
+    private Task.State state = Task.State.fromValue("RED");
+    @SerializedName("comments")
+    @Expose
+    private List<Object> comments = null;
+    @SerializedName("guideline")
+    @Expose
     private String guideline;
-    private Processingtime pTime;
 
-    public Task(String name, Processingtime pTime){
-        this.name = name;
-        this.pTime = pTime;
+
+    public Task(){
+        taskID="eidie";
+        comments = new ArrayList<Object>();
     }
 
-
-    public Object toObject(JSONObject jo){
-        return null;
+    public void addComment(String s){
+        comments.add(s);
     }
 
-    public JSONObject toJSON(Object o){
-        return null;
-    }
-
-    public TaskEvaluationResult getResult(){
-        return taEvaRes;
-    }
-
-    public List<Image> getImages(){
-        return images;
-    }
-
-    public String getID(){
-        return _id;
-    }
-
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setID(String newID){
-        _id = newID;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setName(String newname){
-        name = newname;
+    public Object getCreationDate() {
+        return creationDate;
     }
 
-    public boolean addImage(Image i){
-        return images.add(i);
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public boolean removeImage(Image i){
-        return images.remove(i);
+    public Object getDeadline() {
+        return deadline;
     }
 
-
-
-    @Override
-    public void evaluate(EvaluationResult result, Evaluator eva){
-
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 
+    public Task.State getState() {
+        return state;
+    }
 
+    public void setState(Task.State state) {
+        this.state = state;
+    }
+
+    public List<Object> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Object> comments) {
+        this.comments = comments;
+    }
+
+    public String getGuideline() {
+        return guideline;
+    }
+
+    public void setGuideline(String guideline) {
+        this.guideline = guideline;
+    }
+
+    public String getTaskId(){
+        return taskID;
+    }
+
+    public enum State {
+
+        @SerializedName("RED")
+        RED("RED"),
+        @SerializedName("YELLOW")
+        YELLOW("YELLOW"),
+        @SerializedName("GREEN")
+        GREEN("GREEN");
+        private final String value;
+        private final static Map<String, Task.State> CONSTANTS = new HashMap<String, Task.State>();
+
+        static {
+            for (Task.State c: values()) {
+                CONSTANTS.put(c.value, c);
+            }
+        }
+
+        private State(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
+
+        public String value() {
+            return this.value;
+        }
+
+        public static Task.State fromValue(String value) {
+            Task.State constant = CONSTANTS.get(value);
+            if (constant == null) {
+                throw new IllegalArgumentException(value);
+            } else {
+                return constant;
+            }
+        }
+
+    }
 
 }

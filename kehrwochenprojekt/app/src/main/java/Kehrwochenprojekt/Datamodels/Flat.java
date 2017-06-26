@@ -1,51 +1,72 @@
 package Kehrwochenprojekt.Datamodels;
+
 import java.util.List;
-import java.util.HashSet;
-import org.json.JSONObject;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+
 /**
- * Created by Alex on 22.06.2017.
+ * Flat
+ * <p>
+ *
+ *
  */
-
-public class Flat extends KehrwochenData {
-
-    private String _flatID;
+public class Flat {
+    @SerializedName("flatID")
+    @Expose
+    private String flatID;
+    @SerializedName("name")
+    @Expose
     private String name;
-    private List<String> penalties;
-    private List<User> residents;
+    @SerializedName("creator")
+    @Expose
+    private String creator;
+    @SerializedName("residents")
+    @Expose
+    private List<Object> residents = null;
+    @SerializedName("penalty")
+    @Expose
+    private String penalty;
 
-
-    public Flat(String _flatID, String name){
-
+    public String getName() {
+        return name;
     }
 
-    public Flat(String _flatID, String name, List<String> penalties){
-
+    public void setName(String name) {
+        this.name = name;
     }
 
-    boolean addResident(User res){
-        return residents.add(res);
+    public List<Object> getResidents() {
+        return residents;
     }
 
-    boolean removeResident(User res){
-        return residents.remove(res);
+    public void setResidents(List<Object> residents) {
+        this.residents = residents;
     }
 
-    HashSet<User> getAllResidents(){
-        HashSet<User> residentSet = new HashSet<User>();
-        for(User res : residents){
-            residentSet.add(res);
+    public String getPenalty() {
+        return penalty;
+    }
+
+    public String getCreator(){
+        return creator;
+    }
+
+    public String getID(){
+        return flatID;
+    }
+
+    public void setCreator(String creator){
+        if(creator != null && creator.length() > 0){
+            this.creator = creator;
         }
-        return residentSet;
+        else{
+            throw new IllegalArgumentException("Expected valid username");
+        }
     }
 
-    @Override
-    public JSONObject toJSON(Object o){
-        return null;
-    }
-
-    @Override
-    public Object toObject(JSONObject jo){
-        return null;
+    public void setPenalty(String penalty) {
+        this.penalty = penalty;
     }
 
 }

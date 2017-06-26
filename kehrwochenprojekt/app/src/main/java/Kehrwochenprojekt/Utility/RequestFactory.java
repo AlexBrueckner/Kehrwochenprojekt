@@ -1,6 +1,7 @@
 package Kehrwochenprojekt.Utility;
 
 import Kehrwochenprojekt.Datamodels.JSONConvertible;
+import Kehrwochenprojekt.Utility.ExclusionStrategies.KehrwochenRequest;
 
 /**
  * Created by Alex on 22.06.2017.
