@@ -31,7 +31,7 @@ public final class FlatUserGet extends KehrwochenDataRequest {
 
     public static String getRequest(Flat f){
         if (f != null){
-            return mySerializer.toJson(f);
+                return "?flatId="+f.getID();
         }
         else{
             throw new IllegalArgumentException("Expected valid Flat object!");

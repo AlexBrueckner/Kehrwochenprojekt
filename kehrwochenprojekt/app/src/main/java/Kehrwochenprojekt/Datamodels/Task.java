@@ -18,9 +18,9 @@ import com.google.gson.annotations.SerializedName;
 public class Task {
 
     //TODO: Implement parsing of Dates
-    @SerializedName("taskID")
+    @SerializedName("taskId")
     @Expose
-    private String taskID;
+    private String taskId;
     @SerializedName("name")
     @Expose
     private String name;
@@ -42,7 +42,6 @@ public class Task {
 
 
     public Task(){
-        taskID="eidie";
         comments = new ArrayList<Object>();
     }
 
@@ -99,7 +98,11 @@ public class Task {
     }
 
     public String getTaskId(){
-        return taskID;
+        return taskId;
+    }
+
+    public void setTaskId(String taskId){
+        this.taskId = taskId;
     }
 
     public enum State {

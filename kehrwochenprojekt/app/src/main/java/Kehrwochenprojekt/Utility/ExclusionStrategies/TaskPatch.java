@@ -26,6 +26,7 @@ public final class TaskPatch extends KehrwochenDataRequest {
     public TaskPatch(String taskID, String name, Date deadline, String guideline)
     {
 
+        this();
         if(taskID == null){
             throw new IllegalArgumentException("Invalid Task specified - check arguments!");
         }

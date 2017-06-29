@@ -21,13 +21,13 @@ public final class FlatGet extends KehrwochenDataRequest {
         super();
     }
 
-    public String getRequest(User u){
+    public static String getRequest(User u){
         if(u == null || u.getUserName().length() <= 0){
             throw new IllegalArgumentException("Invalid user specified - check arguments");
         }
 
-        //TODO: Ask the other guy and implement this properly
-        return "I like this class and I cannot lie - you other coders gotta shine!";
+        //USE THIS IN THE URL!!!!!!!!!!!
+        return "?userName="+u.getUserName();
     }
 
 

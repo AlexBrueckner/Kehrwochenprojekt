@@ -33,7 +33,7 @@ public final class TaskGet extends KehrwochenDataRequest {
 
     public static String getRequest(Task t){
         if (t != null){
-            return mySerializer.toJson(t);
+            return "?taskId="+t.getTaskId();
         }
         else{
             throw new IllegalArgumentException("Expected valid Task object!");

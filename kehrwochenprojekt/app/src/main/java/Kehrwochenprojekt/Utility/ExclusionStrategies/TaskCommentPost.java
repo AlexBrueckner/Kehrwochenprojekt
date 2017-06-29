@@ -20,7 +20,7 @@ public final class TaskCommentPost extends KehrwochenDataRequest {
     public static String getRequest(Task t, String comment){
         if (t != null && comment != null && comment.length()>0){
             return "{ \"taskId\":\"" + t.getTaskId()
-                    + "\"\n\"comment\":" + comment + "}";
+                    + "\",\n\"comment\":" + comment + "}";
         }
         else{
             throw new IllegalArgumentException("Expected valid user object!");

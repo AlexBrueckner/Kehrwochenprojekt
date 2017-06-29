@@ -21,7 +21,7 @@ public class TaskUserGet extends KehrwochenDataRequest{
             throw new IllegalArgumentException("Invalid user specified, check arguments");
         }
 
-        return "{\n\"userName\":\""+u.getUserName()+"\"\n}";
+        return "?userName="+u.getUserName();
 
     }
 

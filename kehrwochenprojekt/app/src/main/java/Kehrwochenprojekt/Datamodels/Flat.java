@@ -14,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
 public class Flat {
     @SerializedName("flatID")
     @Expose
-    private String flatID;
+    private String flatId;
     @SerializedName("name")
     @Expose
     private String name;
@@ -52,8 +52,12 @@ public class Flat {
         return creator;
     }
 
+    public void setID(String id){
+        this.flatId = id;
+    }
+
     public String getID(){
-        return flatID;
+        return flatId;
     }
 
     public void setCreator(String creator){

@@ -29,8 +29,12 @@ public final class TaskPost extends KehrwochenDataRequest {
 
     public static String getRequest(User u, Task t){
         if (u != null){
+            String s = "{ \"userName\":\"" + u.getUserName()
+                    + "\",\n\"task\":" + mySerializer.toJson(t) + "}";
+            System.out.println("JSON = " + s);
+
             return "{ \"userName\":\"" + u.getUserName()
-                    + "\"\n\"task\":" + mySerializer.toJson(t) + "}";
+                    + "\",\n\"task\":" + mySerializer.toJson(t) + "}";
         }
         else{
             throw new IllegalArgumentException("Expected valid user object!");

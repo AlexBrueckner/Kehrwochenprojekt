@@ -28,7 +28,7 @@ public final class FlatUserDelete extends KehrwochenDataRequest {
                 throw new IllegalArgumentException("Invalid User specified - check arguments");
             }
 
-            return "{ + \"userName\":\""+u.getUserName()+"\",\n\"flatId\":\""+f.getID()+"\"\n}";
+            return "{\"userName\":\""+u.getUserName()+"\",\n\"flatId\":\""+f.getID()+"\"\n}";
     }
 
 

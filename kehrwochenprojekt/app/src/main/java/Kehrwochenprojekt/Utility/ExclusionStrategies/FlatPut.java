@@ -23,11 +23,15 @@ public final class FlatPut extends KehrwochenDataRequest {
                 throw new IllegalArgumentException("Invalid user specified - check ARguments");
             }
 
-            else if(f == null || (f.getID()==null || f.getID().length() <= 0)){
+            else if(f == null ){
                 throw new IllegalArgumentException("Invalid flat specified - check ARguments");
             }
 
-        return "{\n\"username\":\""+u.getUserName()+"\",\n\"flatID\":\""+f.getID()+"\"\n}";
+        String s = "{\"flatId\":\""+f.getID()+"\",\n\"userName\":\""+u.getUserName()+"\"\n}";
+        System.out.println("DEBUG: Created request String");
+        System.out.println(s);
+        System.out.println("-----");
+        return s;
     }
 
 

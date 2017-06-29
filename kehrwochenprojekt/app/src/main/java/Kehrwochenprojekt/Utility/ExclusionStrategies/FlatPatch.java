@@ -23,6 +23,8 @@ public final class FlatPatch extends KehrwochenDataRequest {
 
     public FlatPatch(String flatID, String name, String penalty){
 
+        this();
+
         if(flatID == null){
             throw new IllegalArgumentException("Invalid flat specified!");
         }
@@ -44,7 +46,7 @@ public final class FlatPatch extends KehrwochenDataRequest {
 
     }
 
-    public String getRequest(User u){
+    public String getRequest(Flat u){
         if (u != null){
             return gsonGuy.toJson(u);
         }
